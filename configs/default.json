@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "depeg_thresholds": [0.01, 0.005, 0.015],
+  "train_fraction": 0.6,
+  "validation_fraction": 0.2,
+  "train_end": null,
+  "validation_end": null,
+  "test_end": null,
+  "min_train_rows": 60,
+  "min_validation_rows": 20,
+  "min_test_rows": 20,
+  "threshold_beta": 2.0,
+  "n_estimators": 200
+}

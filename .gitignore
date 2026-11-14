@@ -1,0 +1,16 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+
+# Keep only the documented synthetic input and empty input template in Git.
+data/*
+!data/demo_synthetic.csv
+!data/master_template.csv
+
+# Preserve one reproducible demo; other runs remain local.
+results/*
+!results/demo/

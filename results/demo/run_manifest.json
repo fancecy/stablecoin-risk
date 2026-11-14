@@ -1,0 +1,98 @@
+{
+  "data_kind": "synthetic",
+  "input_name": "demo_synthetic.csv",
+  "input_sha256": "efb84aa6b517a66e5fd4900e547fd8f3ff843c65c0d3fc1a27dbd1efd9894c5a",
+  "config": {
+    "seed": 42,
+    "depeg_thresholds": [
+      0.01,
+      0.005,
+      0.015
+    ],
+    "train_fraction": 0.6,
+    "validation_fraction": 0.2,
+    "train_end": null,
+    "validation_end": null,
+    "test_end": null,
+    "min_train_rows": 60,
+    "min_validation_rows": 20,
+    "min_test_rows": 20,
+    "threshold_beta": 2.0,
+    "n_estimators": 200
+  },
+  "boundaries": {
+    "train_end": "2022-12-21 00:00:00+00:00",
+    "validation_end": "2023-08-18 00:00:00+00:00",
+    "test_end": "2024-04-14 00:00:00+00:00"
+  },
+  "features": {
+    "market_only": [
+      "price_deviation",
+      "return_1d",
+      "volume_change_1d",
+      "volatility_7d",
+      "volatility_30d",
+      "log_volume",
+      "log_market_cap",
+      "btc_return_1d",
+      "eth_return_1d",
+      "btc_volatility_7d",
+      "eth_volatility_7d",
+      "fed_funds_rate",
+      "treasury_3m_yield",
+      "vix"
+    ],
+    "market_reserve": [
+      "price_deviation",
+      "return_1d",
+      "volume_change_1d",
+      "volatility_7d",
+      "volatility_30d",
+      "log_volume",
+      "log_market_cap",
+      "btc_return_1d",
+      "eth_return_1d",
+      "btc_volatility_7d",
+      "eth_volatility_7d",
+      "fed_funds_rate",
+      "treasury_3m_yield",
+      "vix",
+      "cash_ratio",
+      "treasury_ratio",
+      "reserve_coverage",
+      "reserve_age_days"
+    ]
+  },
+  "required_columns": [
+    "date",
+    "coin",
+    "price",
+    "volume",
+    "market_cap",
+    "btc_price",
+    "eth_price",
+    "fed_funds_rate",
+    "treasury_3m_yield",
+    "vix",
+    "reserve_total",
+    "cash_bank",
+    "treasury_assets",
+    "reserve_outstanding",
+    "market_available_at",
+    "macro_available_at",
+    "reserve_available_at",
+    "reserve_report_date"
+  ],
+  "python": "3.13.5",
+  "packages": {
+    "numpy": "2.3.1",
+    "pandas": "2.3.0",
+    "scikit-learn": "1.6.1",
+    "xgboost": "3.1.2",
+    "joblib": "1.5.1"
+  },
+  "pr_auc_definition": "average_precision_score (non-interpolated AP)",
+  "probability_note": "Class-weighted model scores; not calibrated event frequencies.",
+  "threshold_policy": "Validation F-beta maximum; ties: recall, precision, then higher threshold.",
+  "selection_policy": "Validation AP, recall, F1; deterministic lexical ties. No test selection."
+}
