@@ -97,6 +97,8 @@ def build(data, out):
     payload=dict(events=events,balance=evidence,policy=DEFAULT_POLICY,path_fields=PATH_FIELDS,grid=compact,boundaries=boundaries,manifest=manifest)
     (out/'data.js').write_text('window.STUDY = '+json.dumps(payload,ensure_ascii=False,separators=(',',':'),allow_nan=False)+';\n')
     for name in ['index.html','app.js','style.css']:shutil.copy2(ROOT/'midterm_web'/name,out/name)
+    for source_file in (ROOT/'midterm_web'/'evidence').glob('data-sources.*'):
+        shutil.copy2(source_file, out/'evidence'/source_file.name)
     plot_results(out,case,timing,bd)
     report(out,case,timing,boundaries,manifest)
     (out/'evidence/source_notes.txt').write_text('历史价格：用户提供 stablecoin_final_market_data.xlsx 的价格日历，标注 Coin Metrics / UTC 日度；此次未独立重新下载核验历史版本。\n储备：2023-02-28 Circle USDC 报告，金额此前已核对，签字日2023-03-30，不能视作SVB事件前已知。\n原报告地址：'+raw.source_url+'\n原报告 SHA256：'+raw.source_sha256+'\n储备为事后起点；结算调整假设已结清；国债为基金穿透资产。冲击与融资条件均为情景假设。\n')
