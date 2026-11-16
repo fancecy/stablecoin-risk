@@ -1,0 +1,121 @@
+{
+  "study": "Midterm: historical events and conditional intervention stress tests",
+  "model": "stress.py",
+  "balance": {
+    "balance_id": "USDC_2023-02-28",
+    "coin": "USDC",
+    "cash": 10779090568.0,
+    "treasury": 31677326857.0,
+    "stablecoin_liabilities": 42404871070.0,
+    "data_kind": "reported_snapshot_retrospective_assumptions",
+    "report_date": "2023-02-28",
+    "other_assets": 0.0,
+    "cash_bank_gross": 10928474182.0,
+    "settlement_adjustment": -149383614.0,
+    "reserve_total": 42456417425.0,
+    "source_url": "https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/USDCAttestationReports/2023%20USDC_Circle%20Examination%20Report%20February%202023.pdf",
+    "source_sha256": "a080c787fadf7c8a928e40977d375b0376df0fce39cde89801bdb7b069af590c",
+    "signature_date": "2023-03-30",
+    "publication_status": "unknown",
+    "mapping": "Gross cash plus signed settlement adjustment; assumed settled before shock. Treasury is fund look-through exposure, not verified direct sale or collateral authority."
+  },
+  "policy": {
+    "cash_buffer_target_fraction_of_liabilities": 0.3,
+    "buffer_opportunity_spread_annual": 0.04,
+    "buffer_preposition_days": 30,
+    "credit_limit_fraction_of_initial_liabilities": 0.1,
+    "credit_rate_annual": 0.08,
+    "credit_commitment_fee_annual": 0.005,
+    "collateral_per_dollar_principal": 1.1,
+    "credit_activation_day": 1
+  },
+  "scenario_fixed": {
+    "blocked_cash_fraction": 0.6,
+    "treasury_market_shock": 0,
+    "treasury_sale_haircut": 0.01,
+    "horizon": 30,
+    "redemption_weights": [
+      0.4,
+      0.25,
+      0.15,
+      0.1,
+      0.1
+    ]
+  },
+  "demo_axes": {
+    "redemption_percent": [
+      10,
+      20,
+      30,
+      40,
+      50
+    ],
+    "freeze_days": [
+      3,
+      10,
+      20,
+      30,
+      45
+    ],
+    "daily_sale_percent": [
+      0.1,
+      1,
+      3
+    ],
+    "activation_day": [
+      1,
+      3,
+      5,
+      10
+    ]
+  },
+  "boundary_axes": {
+    "redemption_percent": "1..80 step 1",
+    "freeze_days": [
+      3,
+      10,
+      20,
+      30,
+      45
+    ],
+    "daily_sale_percent": [
+      0.1,
+      1,
+      3
+    ],
+    "activation_day": 1
+  },
+  "demo_configurations": 300,
+  "demo_strategy_runs": 1200,
+  "boundary_strategy_runs": 4800,
+  "ledger_days_checked": 180000,
+  "max_accounting_error_usd": 6.316229701042175e-05,
+  "python": "3.13.5",
+  "input_sha256": {
+    "market.xlsx": "26b971c156afb2d767e9856f8c4e6616f382baf3593824bd608896d70c738430",
+    "reserve_amounts_checked.csv": "0dffebd92fbc64a5147c2a086acf3b25d1622a088f0b8ccadb2a809fb9f29a02"
+  },
+  "code_sha256": {
+    "stress.py": "1d774d74ab88e5b18ab696fd5027aab3566a4ecd7b7a2913070d6f6248130605",
+    "midterm.py": "f76446ab601080686f262e201a4441485afcdac87ed598f80f36888dcc14101e",
+    "build_midterm.py": "50e4f3a24de990e7a3089c6def6c948eba0062c2fd28cd68e1934ca07fcf410d",
+    "write_midterm_english.py": "47b5bedc47aae36e1344726dcbc6145a1b778b02d08dd91af2770a2203e884cf",
+    "index.html": "c857d2ab870374d055eda963c5f854956fdac6c9bc54dd9611777cf31e391e8b",
+    "app.js": "534c1cd67246576c95b69b9ff7472aab89fa240fa1b7ca7f88d40e11b0ba94a5",
+    "style.css": "c400972c0ec0801c6f1ae78acc823297498c6ddea0586afdf37f7fa61c6c0b2f"
+  },
+  "limits": [
+    "Historical chart is observed data; no simulated market price.",
+    "No causal identification or validated early warning.",
+    "Reserve public timestamp unknown; report signed after SVB.",
+    "All shock and policy parameters illustrative, not fitted historical estimates.",
+    "Exogenous identical requests across strategies; no confidence feedback.",
+    "Debt retained; no repayment, refinancing or insolvency resolution model.",
+    "Treasury liquidation and collateral authority not verified.",
+    "Default six events are selected case studies, not independent crisis counts."
+  ],
+  "project_title": "Stablecoin Depegging Risk Prediction and Reserve Stress Testing",
+  "prototype_subtitle": "Midterm Prototype: Historical Events and Intervention Analysis",
+  "prototype_scope": "Reserve stress-testing stage; prediction remains exploratory; no validated forecast-to-intervention pipeline",
+  "proposal_alignment": "Larger cash buffer reallocates existing assets before the shock; additional liquidity support is secured borrowing; combined intervention is an exploratory combination, not a separate reserve-rebalancing strategy. Separate reserve rebalancing remains unimplemented."
+}

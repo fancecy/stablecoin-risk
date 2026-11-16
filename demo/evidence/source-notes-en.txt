@@ -1,0 +1,12 @@
+DATA PROVENANCE
+
+Market prices: the supplied stablecoin_final_market_data.xlsx workbook, complete price-calendar sheet, labelled Coin Metrics / UTC daily. The historical data vintage has not been independently re-downloaded or verified. Event dates are selected reference cases, not independently counted crises.
+
+Reserve snapshot: Circle USDC report as of 2023-02-28. Amounts were previously reconciled. Signature date: 2023-03-30; public release time is unverified. This is a retrospective input, not information established as available before SVB.
+Source: https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/USDCAttestationReports/2023%20USDC_Circle%20Examination%20Report%20February%202023.pdf
+Original PDF SHA256: a080c787fadf7c8a928e40977d375b0376df0fce39cde89801bdb7b069af590c
+
+Net cash includes the signed settlement adjustment, assumed settled before the shock. Treasury holdings are look-through fund assets; direct sale and collateral rights have not been established. All redemption, freeze, liquidation and financing parameters are illustrative assumptions.
+
+Proposal title: Stablecoin Depegging Risk Prediction and Reserve Stress Testing
+Midterm scope: historical case analysis and reserve stress testing. A separate reserve-rebalancing strategy and a validated prediction-to-intervention pipeline have not been implemented.

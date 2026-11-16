@@ -1,0 +1,20 @@
+Stablecoin Depegging Risk Prediction and Reserve Stress Testing
+Midterm Prototype: Historical Events and Intervention Analysis
+
+1. Motivation
+Severe depegging observations are scarce and clustered around a few events. We retain the proposal's project title and two-stage framework, but the midterm demonstration focuses on reserve stress testing. We have not validated an end-to-end early-warning pipeline.
+
+2. Design
+The prototype presents six historical event windows and a detailed retrospective SVB-USDC stress scenario. Four responses are compared under the same requests and initial balance sheet: no intervention, a larger prepositioned cash buffer, additional secured liquidity support, and their combination. A separate reserve-rebalancing strategy remains future work.
+
+3. Default results
+At 20% redemptions and a 10-day freeze of 60% of baseline cash, the no-intervention backlog peaks at approximately USD 2.915 billion. The larger cash buffer reduces this to USD 1.286 billion. Credit from day 1 and the combined intervention avoid a backlog, but leave approximately USD 4.196 billion and USD 2.242 billion in financing debt. These are conditional simulations, not reconstructed historical policy outcomes.
+
+4. Timing and boundaries
+We vary credit activation across days 1, 3, 5, and 10. We also test terminal backlogs across redemption sizes, freeze durations, and sales limits. Payment resilience and solvency are separate: financing may reduce liquidity shortfalls while its fees and interest erode equity. Boundary brackets come from a one-percentage-point grid and are not real-world safety limits.
+
+5. Limits and next steps
+The reserve report was signed after SVB; shock and financing parameters are illustrative. We do not model endogenous runs, market prices, or insolvency resolution. Next steps include better parameter evidence, equal-budget comparisons, distinct reserve rebalancing, and another supported case.
+
+Demonstration sequence
+Select SVB. Compare the four default interventions. Move credit activation to day 5. Then select 40% redemptions, a 45-day freeze and a 0.1% daily sales cap. Review terminal backlogs, debt and the failure brackets. Export the results and configuration.

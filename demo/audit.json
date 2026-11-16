@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "runs": 6000,
+  "ledger_days": 180000,
+  "max_accounting_error_usd": 6.316229701042175e-05,
+  "checks": [
+    "asset-liability identity",
+    "paid redemptions reduce liabilities",
+    "unpaid equals requested minus paid",
+    "collateral not double sold",
+    "nonnegative balances",
+    "loss-equity reconciliation",
+    "queue-day aggregation",
+    "clearance day definition",
+    "reserve components reconcile",
+    "historical dates unique"
+  ],
+  "all_boundary_failure_sequences_monotone": true
+}

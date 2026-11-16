@@ -14,3 +14,6 @@ data/*
 # Preserve one reproducible demo; other runs remain local.
 results/*
 !results/demo/
+
+# Rebuilt midterm artifacts remain local; bundled inputs are tracked.
+midterm/rebuilt/

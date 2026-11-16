@@ -1,6 +1,56 @@
-# USDT / USDC 次日脱锚风险识别
+# Stablecoin Depegging Risk Prediction and Reserve Stress Testing
 
-这是从 CSV 接入到「识别测试期高风险日期与连续 episode」的完整实现。当前未提供真实 master dataset，随附的 `data/demo_synthetic.csv` 和 `results/demo/` **全部属于模拟演示，不是 USDT / USDC 的历史实证结论**。项目不包含资产负债表仿真和压力测试。
+**Midterm Prototype: Historical Events and Intervention Analysis**
+
+## Download and open the English demo
+
+[Download the standalone demo ZIP](https://github.com/fancecy/stablecoin-risk/raw/refs/heads/main/downloads/Stablecoin_Demo_Standalone.zip)
+
+1. Download and extract the **entire** ZIP archive.
+2. Open `Stablecoin_Demo/index.html` in Chrome, Edge, Firefox, or Safari.
+3. Keep all companion files together. No account, Python installation, web server, or internet connection is required for the demo.
+
+GitHub's file viewer displays HTML source; it does not run the demo. Download the ZIP to use the interactive page. The `demo/` folder contains the same portable website, English report, source notes, figures and result tables.
+
+## What is included
+
+- Six historical USDT/USDC event windows, with daily prices from the supplied Coin Metrics-labelled workbook.
+- A retrospective SVB-USDC reserve stress test, based on the checked February 2023 Circle reserve snapshot.
+- Four responses: no intervention, a larger prepositioned cash buffer, additional secured liquidity support, and their combination.
+- Credit activation on days 1, 3, 5 and 10; liquidity-failure and negative-equity boundaries.
+- 300 selectable configurations / 1,200 intervention runs, plus 4,800 boundary runs.
+- CSV exports and reproducible Python calculations. Display amounts use USD billion; CSV monetary fields retain raw USD.
+
+This prototype implements the **reserve stress-testing stage** of the proposal. Prediction remains exploratory; a validated forecast-to-intervention pipeline and a separate reserve-rebalancing policy have not been established. The original prediction module below is retained.
+
+## Reproduce the midterm results
+
+Python 3.10 or later is required only to rebuild the experiments:
+
+```bash
+cd midterm
+python -m venv .venv
+# macOS / Linux:
+source .venv/bin/activate
+# Windows instead: .venv\Scripts\activate
+python -m pip install -r requirements-midterm.txt
+python scripts/build_midterm.py --output ../results/midterm_new
+python scripts/validate_midterm.py --results ../results/midterm_new
+```
+
+Use a new empty output directory. Open the generated `index.html` and `report-en.html`. Dependency installation requires internet access; the calculations use bundled inputs.
+
+## Interpretation and validation
+
+Recovery means **clearing redemption backlogs**, not restoration of the market peg. Simulations compare identical exogenous requests under stated assumptions, not causal historical policy effects. The reserve report was signed after SVB; its public release time is unverified. Net cash assumes settlement adjustments have cleared. Direct liquidation/collateral rights, endogenous runs, market-price formation, debt repayment and insolvency resolution are not established or modelled.
+
+Financing obligations remain in the balance sheet. Better payment capacity does not imply solvency or equal-budget superiority. See `demo/audit.json`, `demo/manifest.json`, and the English report for definitions, provenance and limits.
+
+---
+
+# Earlier prediction module: USDT / USDC 次日脱锚风险识别
+
+这是从 CSV 接入到「识别测试期高风险日期与连续 episode」的完整实现。该早期预测模块随附的 `data/demo_synthetic.csv` 和 `results/demo/` **全部属于模拟演示，不是 USDT / USDC 的历史实证结论**。当前新增的储备压力测试位于 `midterm/`，独立英文演示位于 `demo/`。
 
 ## 先看哪些文件
 

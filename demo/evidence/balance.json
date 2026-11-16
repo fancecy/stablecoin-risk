@@ -1,0 +1,18 @@
+{
+  "balance_id": "USDC_2023-02-28",
+  "coin": "USDC",
+  "cash": 10779090568.0,
+  "treasury": 31677326857.0,
+  "stablecoin_liabilities": 42404871070.0,
+  "data_kind": "reported_snapshot_retrospective_assumptions",
+  "report_date": "2023-02-28",
+  "other_assets": 0.0,
+  "cash_bank_gross": 10928474182.0,
+  "settlement_adjustment": -149383614.0,
+  "reserve_total": 42456417425.0,
+  "source_url": "https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/USDCAttestationReports/2023%20USDC_Circle%20Examination%20Report%20February%202023.pdf",
+  "source_sha256": "a080c787fadf7c8a928e40977d375b0376df0fce39cde89801bdb7b069af590c",
+  "signature_date": "2023-03-30",
+  "publication_status": "unknown",
+  "mapping": "Gross cash plus signed settlement adjustment; assumed settled before shock. Treasury is fund look-through exposure, not verified direct sale or collateral authority."
+}

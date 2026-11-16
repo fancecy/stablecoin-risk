@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "demo_runs": 1200,
+  "boundary_runs": 4800,
+  "model_parity_cases": 4,
+  "event_windows": 6,
+  "local_links": "all present",
+  "data_js_sha256": "9ca37c72aca68fb1688263cfb9a733a145169e0eb6aeecc792f97a8c8ead2210"
+}
