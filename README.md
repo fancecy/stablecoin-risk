@@ -2,6 +2,12 @@
 
 **Midterm Prototype: Historical Events and Intervention Analysis**
 
+## Open the English demo online
+
+**[Open the live demo](https://fancecy.github.io/stablecoin-risk/)** — no download, installation, or account required.
+
+The `demo/` folder is automatically deployed to GitHub Pages when it changes on `main`.
+
 ## Download and open the English demo
 
 [Download the standalone demo ZIP](https://github.com/fancecy/stablecoin-risk/raw/refs/heads/main/downloads/Stablecoin_Demo_Standalone.zip)
