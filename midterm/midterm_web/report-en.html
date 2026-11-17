@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Midterm Research Report</title>
+  <meta name="description" content="Midterm results for stablecoin depegging risk prediction and reserve stress testing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="report">
+  <nav class="topbar">
+    <a class="brand" href="index.html"><span class="brand-peg" aria-hidden="true">$1.00</span>Stablecoin risk research</a>
+    <div class="topbar-links">
+      <span class="course">FTEC5510 midterm report</span>
+      <a href="index.html">Interactive prototype</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <h1>Stablecoin depegging risk prediction and reserve stress testing</h1>
+      <p class="lead">Midterm results: historical events and a comparison of reserve interventions.</p>
+      <a class="btn" href="index.html">Open the interactive prototype</a>
+    </header>
+
+    <section class="report-section">
+      <h2>Alignment with the proposal</h2>
+      <p>The project retains the proposal's two-stage framing: depegging risk prediction and issuer reserve stress testing. This midterm prototype demonstrates the second stage through historical event analysis and conditional intervention comparisons. Prediction experiments remain exploratory; the prototype does not establish a validated forecast-to-intervention pipeline.</p>
+      <p>The larger cash buffer reallocates existing assets before the shock. Additional liquidity support is modelled as a secured credit facility with fees, interest, collateral constraints, and outstanding debt. The combined intervention is an additional comparison, not a relabelled reserve-rebalancing policy. A distinct reserve-rebalancing strategy remains future work.</p>
+    </section>
+
+    <section class="report-section">
+      <h2>Inputs and assumptions</h2>
+      <p>Six selected events can be explored using observed daily prices. Only the SVB-USDC case has an attached reserve simulation. The February 2023 USDC report provides total reserves of USD 42.456 billion and initial stablecoin liabilities of USD 42.405 billion. Modelled net cash is USD 10.779 billion, including signed settlement adjustments assumed settled before the shock.</p>
+      <p>The report was signed on March 30, 2023, after the event; publication timing is unverified. The snapshot is therefore a retrospective input, not evidence of information available for advance intervention.</p>
+      <p>The default scenario assumes cumulative redemptions of 20%, 60% of baseline net cash frozen for 10 days and released on day 11, no Treasury market-value shock, a 1% liquidation haircut, and a daily sales cap of 1% of original Treasury holdings. The horizon is 30 days. Requests arrive over the first five days in proportions of 40%, 25%, 15%, 10%, and 10%.</p>
+      <p>The cash-buffer target is 30% of initial liabilities, prepared 30 days before the shock at a 4% annual opportunity spread. Credit is capped at 10% of initial liabilities, costs 8% annual interest plus a 0.5% annual commitment fee, and requires collateral equal to 110% of principal. Extra cash is assumed outside the frozen channel; credit is assumed precommitted. These are scenario assumptions, not fitted historical parameters.</p>
+      <p class="link-row"><a href="evidence/source-notes-en.txt">Source notes</a><a href="evidence/balance.json">Reserve mapping</a><a href="evidence/Circle_USDC_2023_02.pdf">Original Circle report</a></p>
+    </section>
+
+    <section class="report-section">
+      <h2>Intervention comparison</h2>
+      <p>Amounts below are in USD billion. Recovery refers to clearing redemption backlogs, not restoration of the secondary-market peg. Economic cost includes the opportunity cost of cash; outstanding debt is reported separately.</p>
+      <div class="table-scroll">
+        <table class="num-table">
+          <thead>
+            <tr>
+              <th scope="col">Intervention</th>
+              <th scope="col">Backlog clearance</th>
+              <th scope="col">Peak backlog</th>
+              <th scope="col">Economic cost</th>
+              <th scope="col">Ending debt</th>
+              <th scope="col">Min. net coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">No intervention</th><td>Day 11</td><td>2.915</td><td>0.0285</td><td>0.000</td><td>100.065%</td></tr>
+            <tr><th scope="row">Larger cash buffer</th><td>Day 10</td><td>1.286</td><td>0.0289</td><td>0.000</td><td>100.086%</td></tr>
+            <tr><th scope="row">Additional liquidity support</th><td>No backlog</td><td>0.000</td><td>0.0270</td><td>4.196</td><td>100.072%</td></tr>
+            <tr><th scope="row">Combined intervention</th><td>No backlog</td><td>0.000</td><td>0.0212</td><td>2.242</td><td>100.108%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <img src="figures/01_case_queue_and_debt.png" alt="Backlog and outstanding debt by intervention">
+      <p>In this scenario, the larger cash buffer reduces the peak backlog. Credit available from day 1 and the combined intervention avoid a backlog, but both retain financing obligations at the end of the horizon. Their resource inputs differ; the results do not establish equal-budget superiority.</p>
+    </section>
+
+    <section class="report-section">
+      <h2>Intervention timing</h2>
+      <p>Only the credit activation day changes. All interventions face the same exogenous requests and shock. Cash buffers are always prepared before the shock. Amounts are in USD billion.</p>
+      <div class="table-scroll">
+        <table class="num-table">
+          <thead>
+            <tr>
+              <th scope="col">Intervention</th>
+              <th scope="col">Credit starts</th>
+              <th scope="col">Clearance</th>
+              <th scope="col">Peak backlog</th>
+              <th scope="col">Economic cost</th>
+              <th scope="col">Ending debt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Additional liquidity support</th><td>Day 1</td><td>No backlog</td><td>0.000</td><td>0.0270</td><td>4.196</td></tr>
+            <tr><th scope="row">Combined intervention</th><td>Day 1</td><td>No backlog</td><td>0.000</td><td>0.0212</td><td>2.242</td></tr>
+            <tr><th scope="row">Additional liquidity support</th><td>Day 3</td><td>Day 5</td><td>0.889</td><td>0.0280</td><td>3.881</td></tr>
+            <tr><th scope="row">Combined intervention</th><td>Day 3</td><td>No backlog</td><td>0.000</td><td>0.0212</td><td>2.242</td></tr>
+            <tr><th scope="row">Additional liquidity support</th><td>Day 5</td><td>Day 5</td><td>2.382</td><td>0.0297</td><td>3.249</td></tr>
+            <tr><th scope="row">Combined intervention</th><td>Day 5</td><td>Day 5</td><td>0.753</td><td>0.0236</td><td>1.611</td></tr>
+            <tr><th scope="row">Additional liquidity support</th><td>Day 10</td><td>Day 10</td><td>2.917</td><td>0.0347</td><td>1.670</td></tr>
+            <tr><th scope="row">Combined intervention</th><td>Day 10</td><td>Day 10</td><td>1.288</td><td>0.0305</td><td>0.034</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <img src="figures/02_activation_timing.png" alt="Credit activation timing, peak backlog and economic cost">
+      <p>Later funding cannot erase a backlog that has already occurred. This demonstrates conditional timing effects, not the predictive ability to issue an early warning.</p>
+    </section>
+
+    <section class="report-section">
+      <h2>Failure boundaries and solvency</h2>
+      <p>Liquidity failure means a remaining backlog on day 30. A solvency warning means negative equity on at least one day. The boundary grid tests redemptions from 1% to 80%, in one-percentage-point increments, across freeze durations of 3, 10, 20, 30, and 45 days and daily sales caps of 0.1%, 1%, and 3%. Credit starts on day 1.</p>
+      <p>The table below fixes the freeze at 10 days and the daily sales cap at 1%. Brackets locate the first tested backlog failure, not an exact or real-world safety threshold.</p>
+      <div class="table-scroll">
+        <table class="num-table">
+          <thead>
+            <tr>
+              <th scope="col">Intervention</th>
+              <th scope="col">First backlog failure bracket</th>
+              <th scope="col">First negative-equity point</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Larger cash buffer</th><td>(52%, 53%]</td><td>43%</td></tr>
+            <tr><th scope="row">Combined intervention</th><td>(61%, 62%]</td><td>32%</td></tr>
+            <tr><th scope="row">Additional liquidity support</th><td>(57%, 58%]</td><td>26%</td></tr>
+            <tr><th scope="row">No intervention</th><td>(47%, 48%]</td><td>38%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Liquidity support can extend payment capacity while its fees and interest consume a thin equity cushion. In this slice, negative equity appears earlier under credit alone even though the first backlog failure occurs at a larger redemption shock. Once equity becomes negative, subsequent paths are accounting scenarios, not executable commitments: insolvency resolution is not modelled.</p>
+      <img src="figures/03_failure_map.png" alt="Unpaid redemptions at day 30 under a 0.1% daily sales cap">
+      <p>The heatmap fixes the daily sales cap at 0.1%. A 30-day and a 45-day freeze both prevent release within the observation window, so they produce identical terminal outcomes here.</p>
+    </section>
+
+    <section class="report-section">
+      <h2>Validation and limitations</h2>
+      <p>The prototype includes 300 selectable configurations and 1,200 intervention runs, plus 4,800 boundary runs. All 180,000 daily ledgers were checked for balance-sheet identities, redemption accounting, collateral constraints, loss reconciliation, and clearance dates. Maximum accounting error: USD 0.00006316.</p>
+      <p>Historical prices do not capture intraday lows. Public disclosure timing and direct reserve operating rights remain unverified. Requests are exogenous and identical across interventions; confidence feedback, endogenous runs, market-price formation, repayment, refinancing, and insolvency resolution are not modelled. The findings are conditional scenario outcomes, not causal estimates of real-world policy effects.</p>
+      <p>Next steps are evidence-based parameter ranges, equal-budget comparisons, a separate reserve-rebalancing policy, and a second case with adequate reserve evidence.</p>
+      <p class="link-row"><a href="results/case_comparison.csv">Case CSV</a><a href="results/timing_comparison.csv">Timing CSV</a><a href="results/failure_boundaries.csv">Boundary CSV</a><a href="audit.json">Accounting checks</a><a href="manifest.json">Manifest</a><a href="presentation-notes.txt">Presentation notes</a></p>
+    </section>
+  </main>
+</body>
+</html>

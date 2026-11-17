@@ -96,7 +96,7 @@ def build(data, out):
     (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
     payload=dict(events=events,balance=evidence,policy=DEFAULT_POLICY,path_fields=PATH_FIELDS,grid=compact,boundaries=boundaries,manifest=manifest)
     (out/'data.js').write_text('window.STUDY = '+json.dumps(payload,ensure_ascii=False,separators=(',',':'),allow_nan=False)+';\n')
-    for name in ['index.html','app.js','style.css']:shutil.copy2(ROOT/'midterm_web'/name,out/name)
+    for name in ['index.html','app.js','style.css','report-en.html']:shutil.copy2(ROOT/'midterm_web'/name,out/name)
     for source_file in (ROOT/'midterm_web'/'evidence').glob('data-sources.*'):
         shutil.copy2(source_file, out/'evidence'/source_file.name)
     plot_results(out,case,timing,bd)
